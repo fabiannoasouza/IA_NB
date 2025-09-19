@@ -70,7 +70,7 @@ O **Naive Bayes** é um dos algoritmos de classificação mais conhecidos e ampl
 
 O classificador Naive Bayes é fundamentado no **Teorema de Bayes**, que descreve a probabilidade de um evento, com base no conhecimento prévio de condições que podem estar relacionadas a esse evento. A fórmula é a seguinte:
 
-```latex
+```math
 P(c|x) = \frac{P(x|c) \cdot P(c)}{P(x)}
 ```
 
@@ -82,7 +82,7 @@ Onde:
 
 A suposição "ingênua" (*naive*) do algoritmo é que **todas as características `x` são independentes entre si**, dada a classe `c`. Isso simplifica o cálculo da verossimilhança para um simples produto de probabilidades individuais:
 
-```latex
+```math
 P(x|c) = P(x_1|c) \cdot P(x_2|c) \cdot \dots \cdot P(x_n|c) = \prod_{i=1}^{n} P(x_i|c)
 ```
 
@@ -114,7 +114,7 @@ Para aplicar o Teorema de Bayes a um problema de classificação, adaptamos sua 
 
 Em uma tarefa de classificação, queremos encontrar a classe `y` que é mais provável, dadas as features observadas. Isso é conhecido como a regra de decisão **Maximum A Posteriori (MAP)**. Matematicamente, buscamos a classe `ŷ` que maximiza a probabilidade a posteriori:
 
-```latex
+```math
 ŷ = \underset{y}{\mathrm{argmax}} \, P(y | x_1, \dots, x_n)
 ```
 
@@ -126,13 +126,13 @@ Calcular o termo de verossimilhança `P(x₁, ..., xₙ | y)` diretamente é com
 
 Essa suposição simplifica drasticamente o cálculo, permitindo que a verossimilhança conjunta seja decomposta no produto das probabilidades individuais:
 
-```latex
+```math
 P(x_1, \dots, x_n | y) = \prod_{i=1}^{n} P(x_i | y)
 ```
 
 Substituindo essa simplificação, obtemos a fórmula central do classificador Naive Bayes:
 
-```latex
+```math
 ŷ = \underset{y}{\mathrm{argmax}} \, P(y) \prod_{i=1}^{n} P(x_i | y)
 ```
 
@@ -156,10 +156,10 @@ O objetivo é construir uma tabela de probabilidades a partir dos dados de trein
 
 #### 1. Cálculo das Probabilidades a Priori `P(y)`
 Calcula-se a frequência relativa de cada classe. Exemplo: 100 e-mails (30 spam, 70 não spam).
-```latex
+```math
 P(\text{spam}) = 30 / 100 = 0.3
 ```
-```latex
+```math
 P(\text{não spam}) = 70 / 100 = 0.7
 ```
 
@@ -173,7 +173,7 @@ Se uma palavra nunca apareceu em uma classe durante o treino, sua probabilidade 
 
 Para uma nova instância, o algoritmo calcula uma pontuação para cada classe usando a regra MAP. O denominador `P(X)` é ignorado, pois é constante para todas as classes.
 
-```latex
+```math
 Pontuação(y) \propto P(y) \prod_{i=1}^{n} P(x_i | y)
 ```
 A classe `y` que obtiver a **maior pontuação** é a predição do modelo.
